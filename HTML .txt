@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeghaTales | Truly yours books hub </title>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #334e68;
+            --accent: #47b8e0;
+            --light: #f5f7fa;
+            --dark: #243141;
+            --success: #48bb78;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-accent {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .cta-button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #3da1c6;
+            transform: translateY(-2px);
+        }
+        
+        .hero {
+            padding: 12rem 0 6rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #555;
+        }
+        
+        .intro-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .intro-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .intro-card p {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-color: #ddd;
+        }
+        
+        .service-content {
+            padding: 2rem;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .about {
+            background-color: #edf2f7;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-img {
+            height: 400px;
+            background-color: #ddd;
+            border-radius: 10px;
+        }
+        
+        .about-content h2 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonials {
+            background-color: white;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: #f8fafc;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 1rem;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 0.25rem;
+        }
+        
+        .author-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .contact {
+            background-color: #edf2f7;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        .contact-info {
+            padding: 2rem;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: white;
+        }
+        
+        .friendly-cta {
+            padding: 3rem 0;
+            background-color: white;
+            text-align: center;
+        }
+        
+        .friendly-cta h2 {
+            margin-bottom: 2rem;
+            color: var(--secondary);
+        }
+        
+        .cta-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .cta-card {
+            background-color: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .cta-card p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-col h4 {
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">AI<span class="logo-accent">Nexus</span></div>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="cta-button">Let's Talk AI</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Your AI Sidekick for Getting Things Done</h1>
+            <p>Hey there! I'm your go-to AI sidekick — here to help you use tools like ChatGPT, Midjourney, and more to save time, boost creativity, and get things done.</p>
+            
+            <div class="intro-cards">
+                <div class="intro-card">
+                    <p>Not sure how to use AI for your business or personal projects? That's where I come in — let's figure it out together!</p>
+                </div>
+                <div class="intro-card">
+                    <p>I turn 'I wish I had more time' into 'Wow, that was fast.' Let AI do the heavy lifting — I'll show you how.</p>
+                </div>
+                <div class="intro-card">
+                    <p>I help people like you turn 'I wish I could' into 'I just did' — thanks to smart AI tools.</p>
+                </div>
+            </div>
+            
+            <button class="cta-button">You bring the idea, I'll bring the AI</button>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img">
+                    <img src="/api/placeholder/500/400" alt="About Me">
+                </div>
+                <div class="about-content">
+                    <h2>Think of me as your AI buddy</h2>
+                    <p>I handle the tech stuff so you can focus on what you do best.</p>
+                    <p>No fancy buzzwords here — just simple, helpful AI solutions that actually make your life easier.</p>
+                    <p>If you've got a task, I've probably got an AI tool to do it faster. Let's make your to-do list shorter.</p>
+                    <p>I mix creativity + tech to help you work smarter, not harder. Whether it's writing, visuals, or automation — I've got your back.</p>
+                    <button class="cta-button">Let's Make Something Awesome</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>My Services</h2>
+                <p>Smart AI solutions that save you time and boost your creativity</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/400/200" alt="Content Writing">
+                    </div>
+                    <div class="service-content">
+                        <h3>Writing & Content Help</h3>
+                        <p>Need blog posts, emails, or social media content? I use AI to write faster and better — and yes, it still sounds human.</p>
+                        <p>Need to write something but don't know where to start? I've got AI tools (and human editing skills) for that.</p>
+                        <p>Words are hard. Luckily, I've trained some robots that are pretty good at them.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/400/200" alt="AI Visuals">
+                    </div>
+                    <div class="service-content">
+                        <h3>AI Visuals & Midjourney Magic</h3>
+                        <p>Logos, thumbnails, posters, and more — if you can imagine it, I can generate it.</p>
+                        <p>Want cool visuals or brand images but don't know how to design? I've got AI tools for that — and a good eye to make sure it looks great.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/400/200" alt="AI Automation">
+                    </div>
+                    <div class="service-content">
+                        <h3>Automation & Smart Workflows</h3>
+                        <p>Tired of doing the same thing every day? Let's automate it with a little AI magic.</p>
+                        <p>I help freelancers, creators, and small teams build AI workflows that save time and sanity.</p>
+                        <p>Got boring tasks that eat up your day? I use AI and automation tools to give you that time back.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/400/200" alt="AI Strategy">
+                    </div>
+                    <div class="service-content">
+                        <h3>AI Strategy Consulting</h3>
+                        <p>Develop a comprehensive AI roadmap for your business, identifying opportunities for integration and improved efficiency.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/400/200" alt="Custom AI Solutions">
+                    </div>
+                    <div class="service-content">
+                        <h3>Custom AI Solutions</h3>
+                        <p>Even if it's just a half-baked idea, I can help you figure out how to bring it to life with AI.</p>
+                        <p>AI is cool but confusing, right? I'll walk you through it and help you use it in a way that actually makes sense.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/400/200" alt="AI Training">
+                    </div>
+                    <div class="service-content">
+                        <h3>AI Training & Workshops</h3>
+                        <p>Empower your team with knowledge about AI technologies and practical implementation strategies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>A selection of successful AI implementations across various industries</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/400/200" alt="Content Creation">
+                    </div>
+                    <div class="service-content">
+                        <h3>Content Creation System</h3>
+                        <p>Built an AI content pipeline that helped a blogger increase output by 5x while maintaining their unique voice.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/400/200" alt="Visual Identity">
+                    </div>
+                    <div class="service-content">
+                        <h3>Visual Identity Creation</h3>
+                        <p>Designed a complete brand identity kit for a startup using Midjourney, saving them thousands in design costs.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/400/200" alt="Automation">
+                    </div>
+                    <div class="service-content">
+                        <h3>Small Business Automation</h3>
+                        <p>Created a customer service AI chatbot that freed up 15+ hours weekly for a small e-commerce business owner.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Client Testimonials</h2>
+                <p>What my clients say about working with me</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Working with Ray transformed my content creation workflow. Their AI expertise helped me produce twice the content in half the time, and it still sounds like me! My newsletter subscribers can't tell the difference."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img"></div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Content Creator</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "As someone who's not technical at all, I was hesitant about using AI tools. Ray made the process super simple and showed me exactly how to use ChatGPT to improve my customer emails. It's been a game-changer for my small business."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img"></div>
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Small Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Ray helped me automate the boring parts of my work so I could focus on the creative stuff. The custom workflow they built saves me hours every week, and it was super affordable compared to hiring a developer."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img"></div>
+                        <div class="author-info">
+                            <h4>Elena Rodriguez</h4>
+                            <p>Freelance Designer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="friendly-cta">
+        <div class="container">
+            <h2>Not sure if AI is right for you?</h2>
+            <div class="cta-cards">
+                <div class="cta-card">
+                    <p>Stuck on something? I'll help you figure out how AI can fix it — or at least make it easier.</p>
+                    <button class="cta-button">Let's Chat</button>
+                </div>
+                <div class="cta-card">
+                    <p>Got questions? No such thing as a dumb one here. Let's talk AI in plain English.</p>
+                    <button class="cta-button">Ask Away</button>
+                </div>
+                <div class="cta-card">
+                    <p>Don't worry if you're not 'techy' — that's my job. You bring the idea, I'll bring the AI magic.</p>
+                    <button class="cta-button">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Me</h2>
+                <p>Got a project in mind? Or just curious about what's possible with AI? Let's chat — no pressure.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="Your message"></textarea>
+                        </div>
+                        <button class="cta-button" type="submit">Tell me what you do — I'll tell you how AI can help</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-detail">
+                        <div class="contact-icon">📱</div>
+                        <p>8794852498</p>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">✉️</div>
+                        <p>rayozborne@icloud.com</p>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">✉️</div>
+                        <p>rayozborne.del@gmail.com</p>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">✉️</div>
+                        <p>rayozborne@gmail.com</p>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">📍</div>
+                        <p>Shillong, Meghalaya, India</p>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">🕒</div>
+                        <p>Available Mon-Fri, 9AM-6PM IST</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>AI Nexus</h4>
+                    <p>Your AI sidekick for getting things done faster and smarter. I help businesses and individuals harness the power of AI tools like ChatGPT and Midjourney.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">AI Writing & Content</a></li>
+                        <li><a href="#">AI Visuals & Midjourney</a></li>
+                        <li><a href="#">Automation & Workflows</a></li>
+                        <li><a href="#">AI Training</a></li>
+                        <li><a href="#">Custom AI Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">tw</a>
+                        <a href="#" class="social-icon">gh</a>
+                        <a href="#" class="social-icon">md</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Ray Ozborne | AI Nexus. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
